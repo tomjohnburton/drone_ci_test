@@ -8,13 +8,13 @@ resource "aws_instance" "runner" {
   security_groups = [
     aws_security_group.runner.name]
 
-  key_name = aws_key_pair.local.key_name
+  key_name = aws_key_pair.drone_key.key_name
 
   connection {
     type = "ssh"
     user = "ubuntu"
     host = aws_instance.drone.public_ip
-    private_key = file("~/.ssh/id_rsa")
+    private_key = tls_private_key.tls.private_key_pem
   }
 
   provisioner "file" {

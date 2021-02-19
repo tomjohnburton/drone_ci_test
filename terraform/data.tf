@@ -17,8 +17,3 @@ data "aws_ami" "ubuntu" {
     "099720109477"]
   # Canonical
 }
-
-resource "aws_key_pair" "local" {
-  key_name = "local"
-  public_key = file("~/.ssh/id_rsa.pub")
-}

@@ -1,3 +1,9 @@
+resource "aws_default_vpc" "default" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
 resource "aws_security_group" "drone" {
   name = "drone"
   ingress {
@@ -49,6 +55,6 @@ resource "aws_security_group" "runner" {
     to_port = 80
     protocol = "tcp"
     cidr_blocks = [
-      "172.31.0.0/16"]
+      aws_default_vpc.default.cidr_block]
   }
 }

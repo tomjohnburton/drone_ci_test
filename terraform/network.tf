@@ -1,12 +1,12 @@
-data "aws_route53_zone" "ourbrain-io" {
-  name = "ourbrain.io"
+data "aws_route53_zone" "zone" {
+  name = var.zone_name
 }
 
 resource "aws_route53_record" "drone" {
-  name = "drone.ourbrain.io"
+  name = var.drone_server_url
   type = "A"
   ttl = "300"
-  zone_id = data.aws_route53_zone.ourbrain-io.id
+  zone_id = data.aws_route53_zone.zone.id
   records = [
     aws_instance.drone.public_ip
   ]
