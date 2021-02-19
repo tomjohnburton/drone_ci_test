@@ -102,6 +102,11 @@ resource "aws_instance" "drone" {
     destination = "/tmp/provision.sh"
   }
 
+  provisioner "file" {
+    source = "./secrets"
+    destination = "/tmp/secrets"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/provision.sh",
