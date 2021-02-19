@@ -45,7 +45,8 @@ Update the variables in `terraform/variables.tf`.
 For simplicity, the runners are configured in your AWS default VPC. You'll need 
 to import it to your `tfstate`.
 ```
-terraform import aws_default_vpc.default vpc-<YOUR_VPC_ID>
+$ cd terraform
+$ cd terraform import aws_default_vpc.default vpc-<YOUR_VPC_ID>
 ```
 
 
